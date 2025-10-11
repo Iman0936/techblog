@@ -1,18 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:techblog/component/my_component.dart';
+import 'package:techblog/component/my_string.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/models/fake_data.dart';
 import 'package:techblog/my_colors.dart';
-import 'package:techblog/my_component.dart';
-import 'package:techblog/my_string.dart';
 
-class myCats extends StatefulWidget {
+class MyCats extends StatefulWidget {
+  const MyCats({super.key});
+
   @override
-  State<myCats> createState() => _myCatsState();
+  State<MyCats> createState() => _MyCatsState();
 }
 
-class _myCatsState extends State<myCats> {
+class _MyCatsState extends State<MyCats> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -73,6 +75,7 @@ class _myCatsState extends State<myCats> {
                                 if (!selectedTags.contains(tagList[index])) {
                                   selectedTags.add(tagList[index]);
                                 } else {
+                                  // ignore: avoid_print
                                   print("${tagList[index].title} exist");
                                 }
                               });

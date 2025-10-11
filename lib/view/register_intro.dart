@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:techblog/gen/assets.gen.dart';
-import 'package:techblog/my_string.dart';
+import 'package:techblog/component/my_string.dart';
 import 'package:techblog/view/my_cats.dart';
 import 'package:validators/validators.dart';
 
@@ -87,8 +87,9 @@ class RegisterIntro extends StatelessWidget {
                     padding: const EdgeInsets.all(24),
                     child: TextField(
                       onChanged: (value) {
+                        // ignore: avoid_print
                         print(
-                          value + " is Email: " + isEmail(value).toString(),
+                          "$value is Email: ${isEmail(value)}",
                         );
                       },
                       style: textTheme.headlineSmall!.copyWith(
@@ -154,8 +155,9 @@ class RegisterIntro extends StatelessWidget {
                     padding: const EdgeInsets.all(24),
                     child: TextField(
                       onChanged: (value) {
+                        // ignore: avoid_print
                         print(
-                          value + " is Email: " + isEmail(value).toString(),
+                          "$value is Email: ${isEmail(value)}",
                         );
                       },
                       style: textTheme.headlineSmall!.copyWith(
@@ -171,7 +173,7 @@ class RegisterIntro extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => myCats()),
+                        MaterialPageRoute(builder: (context) => MyCats()),
                       );
                     },
                     child: Text(

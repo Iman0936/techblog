@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:techblog/component/my_component.dart';
+import 'package:techblog/component/my_string.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/component/my_colors.dart';
 import 'package:techblog/view/home_screen.dart';
 import 'package:techblog/view/profile_screen.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _MainScreenState extends State<MainScreen> {
-  var selectedPageIndex = 0;
+class MainScreen extends StatelessWidget {
+  RxInt selectedPageIndex = 0.obs;
+
+  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,9 @@ class _MainScreenState extends State<MainScreen> {
                     "اشتراک گذاری تک بلاگ",
                     style: textTheme.headlineMedium,
                   ),
-                  onTap: () {},
+                  onTap: () async{
+                    await SharePlus.instance.share(ShareParams(text: MyString.shareText));
+                  },
                 ),
                 const Divider(color: SolidColors.dividerColor),
                 ListTile(
@@ -64,7 +66,9 @@ class _MainScreenState extends State<MainScreen> {
                     "تک‌بلاگ در گیت هاب",
                     style: textTheme.headlineMedium,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    myLaunchUrl(MyString.techBlogGithubUrl);
+                  },
                 ),
                 const Divider(color: SolidColors.dividerColor),
               ],
@@ -93,8 +97,8 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
             Positioned.fill(
-              child: IndexedStack(
-                index: selectedPageIndex,
+              child: Obx(() => IndexedStack(
+                index: selectedPageIndex.value,
                 children: [
                   HomeScreen(
                     size: size,
@@ -107,15 +111,15 @@ class _MainScreenState extends State<MainScreen> {
                     bodyMargin: bodyMargin,
                   ), //1
                 ],
-              ),
+              ),)
             ),
             BottomNavigation(
               size: size,
               bodyMargin: bodyMargin,
               changeScreen: (int value) {
-                setState(() {
-                  selectedPageIndex = value;
-                });
+        
+                  selectedPageIndex.value = value;
+                
               },
             ),
           ],

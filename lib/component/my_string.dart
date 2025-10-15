@@ -1,4 +1,5 @@
 class MyString {
+  static const String techBlogGithubUrl = "https://github.com/Iman0936/techblog";
   static const String viewHotestBlog = "مشاهده داغ ترین نوشته ها ";
   static const String viewHotestPodcasts = "مشاهده داغ ترین پادکست ها ";
   static const String relatedArticles = "نوشته های مرتبط";
@@ -14,7 +15,11 @@ class MyString {
   static const String welcom = """به تک‌بلاگ خوش اومدی
 
 برای ارسال مطلب و پادکست باید حتما 
-ثبت نام کنی """;
+ثبت نام کنی """;static const String shareText = """
+من از تک بلاگ استفاده میکنم ، خیلی باحاله ، توهم داشته باش\n
+
+www.sasansafari.com
+""";
   static const String successfulRegisteration =
       """تبریک میگم ، ایمیل با موفقیت تایید شد
 لطفا اطلاعات ثبت نام رو کامل کن""";

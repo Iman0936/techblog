@@ -3,11 +3,12 @@ import 'package:techblog/component/api_constant.dart';
 import 'package:techblog/models/article_model.dart';
 import 'package:techblog/models/podcast_model.dart';
 import 'package:techblog/models/poster_model.dart';
+import 'package:techblog/models/tags_model.dart';
 import 'package:techblog/services/dio_service.dart';
 
 class HomeScreenController extends GetxController {
   Rx<PosterModel> poster = PosterModel().obs;
-  RxList tagList = RxList();
+  RxList<TagsModel> tagsList = RxList();
   RxList<ArticleModel> topVisitedList = RxList();
   RxList<PodcastModel> topPodcasts = RxList();
   RxBool loading = false.obs;
@@ -19,7 +20,7 @@ class HomeScreenController extends GetxController {
   }
 
   getHomeItems() async {
-    loading.value=true;
+    loading.value = true;
     var response = await DioService().getMethod(ApiConstant.getHomeItems);
 
     if (response.statusCode == 200) {
@@ -29,9 +30,12 @@ class HomeScreenController extends GetxController {
       response.data['top_podcasts'].forEach((element) {
         topPodcasts.add(PodcastModel.fromJson(element));
       });
+      response.data['tags'].forEach((element) {
+        tagsList.add(TagsModel.fromJson(element));
+      });
 
       poster.value = PosterModel.fromJson(response.data['poster']);
-      loading.value=false;
+      loading.value = false;
     }
   }
 }

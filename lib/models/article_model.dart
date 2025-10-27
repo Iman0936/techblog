@@ -1,15 +1,16 @@
+// models/article_model.dart
 import 'package:techblog/component/api_constant.dart';
 
 class ArticleModel {
-  String? id;
-  String? title;
-  String? image;
-  String? catId;
-  String? catName;
-  String? author;
-  String? view;
-  String? status;
-  String? createdAt;
+  final String id;
+  final String title;
+  final String image;
+  final String catId;
+  final String catName;
+  final String author;
+  final String view;
+  final String status;
+  final String createdAt;
 
   ArticleModel({
     required this.id,
@@ -23,15 +24,17 @@ class ArticleModel {
     required this.createdAt,
   });
 
-  ArticleModel.fromJson(Map<String, dynamic> element) {
-    id = element["id"];
-    image = ApiConstant.hostDLUrl + element["image"];
-    title = element["title"];
-    catId = element["cat_id"];
-    catName = element["cat_name"];
-    author = element["author"];
-    view = element["view"];
-    status = element["status"];
-    createdAt = element["created_at"];
+  factory ArticleModel.fromJson(Map<String, dynamic> json) {
+    return ArticleModel(
+      id: json['id']?.toString() ?? '0',
+      title: json['title']?.toString() ?? 'بدون عنوان',
+      image: '${ApiConstant.hostDlUrl}${json['image']?.toString() ?? 'default.jpg'}',
+      catId: json['cat_id']?.toString() ?? '0',
+      catName: json['cat_name']?.toString() ?? 'دسته‌بندی نامشخص',
+      author: json['author']?.toString() ?? 'ناشناس',
+      view: json['view']?.toString() ?? '0',
+      status: json['status']?.toString() ?? '0',
+      createdAt: json['created_at']?.toString() ?? 'نامشخص',
+    );
   }
 }

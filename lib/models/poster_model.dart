@@ -9,7 +9,7 @@ class PosterModel {
 
   PosterModel.fromJson(Map<String, dynamic> element) {
     id = element["id"];
-    image = ApiConstant.hostDLUrl + element["image"];
     title = element["title"];
+    image = ApiConstant.hostDlUrl + element["image"];
   }
 }

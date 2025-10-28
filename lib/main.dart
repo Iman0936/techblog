@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:techblog/component/my_colors.dart';
 import 'package:techblog/view/article_list_screen.dart';
-import 'package:techblog/view/main_screen/main_screen.dart';
-import 'package:techblog/view/single.dart';
+import 'package:techblog/view/splash_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -25,16 +24,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        Locale('fa', ''), // English
-      ],
+      locale: const Locale('fa'),
       theme: ThemeData(
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
@@ -110,7 +102,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: SplashScreen(),
-      home: ArticleListScreen(),
+      home: SplashScreen(),
     );
   }
 }

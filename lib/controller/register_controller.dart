@@ -44,7 +44,7 @@ class RegisterController extends GetxController {
       case 'verified':
         var box = GetStorage();
         box.write(token, response.data['token']);
-        box.write(userId, response.data['user_id']);P
+        box.write(userId, response.data['user_id']);
 
         debugPrint("read => ${box.read(token)}");
         debugPrint("read => ${box.read(userId)}");

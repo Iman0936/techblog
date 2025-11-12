@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:techblog/component/my_component.dart';
 import 'package:techblog/component/my_string.dart';
+import 'package:techblog/controller/register_controller.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/component/my_colors.dart';
 import 'package:techblog/view/main_screen/home_screen.dart';
@@ -10,6 +11,7 @@ import 'package:techblog/view/main_screen/profile_screen.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
+// ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   RxInt selectedPageIndex = 0.obs;
 
@@ -56,8 +58,10 @@ class MainScreen extends StatelessWidget {
                     "اشتراک گذاری تک بلاگ",
                     style: textTheme.headlineMedium,
                   ),
-                  onTap: () async{
-                    await SharePlus.instance.share(ShareParams(text: MyString.shareText));
+                  onTap: () async {
+                    await SharePlus.instance.share(
+                      ShareParams(text: MyString.shareText),
+                    );
                   },
                 ),
                 const Divider(color: SolidColors.dividerColor),
@@ -97,29 +101,29 @@ class MainScreen extends StatelessWidget {
         body: Stack(
           children: [
             Positioned.fill(
-              child: Obx(() => IndexedStack(
-                index: selectedPageIndex.value,
-                children: [
-                  HomeScreen(
-                    size: size,
-                    textTheme: textTheme,
-                    bodyMargin: bodyMargin,
-                  ), //0
-                  ProfileScreen(
-                    size: size,
-                    textTheme: textTheme,
-                    bodyMargin: bodyMargin,
-                  ), //1
-                ],
-              ),)
+              child: Obx(
+                () => IndexedStack(
+                  index: selectedPageIndex.value,
+                  children: [
+                    HomeScreen(
+                      size: size,
+                      textTheme: textTheme,
+                      bodyMargin: bodyMargin,
+                    ), //0
+                    ProfileScreen(
+                      size: size,
+                      textTheme: textTheme,
+                      bodyMargin: bodyMargin,
+                    ), //1
+                  ],
+                ),
+              ),
             ),
             BottomNavigation(
               size: size,
               bodyMargin: bodyMargin,
               changeScreen: (int value) {
-        
-                  selectedPageIndex.value = value;
-                
+                selectedPageIndex.value = value;
               },
             ),
           ],
@@ -129,8 +133,9 @@ class MainScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({
+  BottomNavigation({
     super.key,
     required this.size,
     required this.bodyMargin,
@@ -140,6 +145,11 @@ class BottomNavigation extends StatelessWidget {
   final Size size;
   final double bodyMargin;
   final Function(int) changeScreen;
+
+  final RegisterController _registerController = Get.put(
+    RegisterController(),
+    permanent: true,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +185,9 @@ class BottomNavigation extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _registerController.toggleLogin();
+                  },
                   icon: ImageIcon(
                     Assets.icons.write.provider(),
                     color: Colors.white,

@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:dio/dio.dart'as dio_service;
 import 'dart:convert';
 
 class DioService {
@@ -10,10 +11,7 @@ class DioService {
       // اصلاح: dio.get نه within
       final response = await dio.get(
         url,
-        options: Options(
-          responseType: ResponseType.plain,
-          method: 'GET',
-        ),
+        options: Options(responseType: ResponseType.plain, method: 'GET'),
       );
 
       String body = response.data.toString();
@@ -45,14 +43,14 @@ class DioService {
       }
 
       return response;
-
     } on DioException catch (e) {
       log('Dio Error: ${e.message}');
-      return e.response ?? Response(
-        requestOptions: RequestOptions(path: url),
-        data: [],
-        statusCode: e.response?.statusCode ?? 500,
-      );
+      return e.response ??
+          Response(
+            requestOptions: RequestOptions(path: url),
+            data: [],
+            statusCode: e.response?.statusCode ?? 500,
+          );
     } catch (e) {
       log('Unexpected Error: $e');
       return Response(
@@ -61,5 +59,19 @@ class DioService {
         statusCode: 500,
       );
     }
+  }
+
+  Future<dynamic> postMethod(Map<String,dynamic> map,String url)async{
+    dio.options.headers['content-Type']='application/json';
+    return await dio.post(url,data: dio_service.FormData.fromMap(map),options: Options(
+      responseType: ResponseType.json,
+      method: 'POST'
+    )).then((value) {
+      log(value.headers.toString());
+      log(value.data.toString());
+      log(value.statusCode.toString());
+      return value;
+    },);
+
   }
 }

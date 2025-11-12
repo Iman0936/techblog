@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:techblog/controller/home_screen_controller.dart';
-import 'package:techblog/controller/list_article_controller.dart';
 import 'package:techblog/controller/single_article_controller.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/models/fake_data.dart';
@@ -12,6 +11,7 @@ import 'package:techblog/component/my_component.dart';
 import 'package:techblog/component/my_string.dart';
 import 'package:techblog/view/article_list_screen.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   HomeScreen({
     super.key,
@@ -45,8 +45,13 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 32),
 
                     GestureDetector(
-                      onTap: () => Get.to(ArticleListScreen(title: 'مقالات جدید')),
-                      child: SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme)),
+                      onTap: () =>
+                          Get.to(ArticleListScreen(title: 'مقالات جدید')),
+                      child: SeeMoreBlog(
+                        bodyMargin: bodyMargin,
+                        textTheme: textTheme,
+                      ),
+                    ),
 
                     topVisited(),
 
@@ -62,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 60),
                   ],
                 )
-              : const Center(child: loading()),
+              : const Center(child: Loading()),
         ),
       ),
     );
@@ -97,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                             CachedNetworkImage(
                               imageUrl: homeScreenController
                                   .topVisitedList[index]
-                                  .image!,
+                                  .image,
                               imageBuilder: ((context, imageProvider) =>
                                   Container(
                                     decoration: BoxDecoration(
@@ -110,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ),
                                   )),
-                              placeholder: (context, url) => loading(),
+                              placeholder: (context, url) => Loading(),
                               errorWidget: (context, url, error) => const Icon(
                                 Icons.image_not_supported_outlined,
                                 size: 50,
@@ -128,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                                   Text(
                                     homeScreenController
                                         .topVisitedList[index]
-                                        .author!,
+                                        .author,
                                     style: textTheme.titleMedium,
                                   ),
                                   Row(
@@ -136,7 +141,7 @@ class HomeScreen extends StatelessWidget {
                                       Text(
                                         homeScreenController
                                             .topVisitedList[index]
-                                            .view!,
+                                            .view,
                                         style: textTheme.titleMedium,
                                       ),
                                       SizedBox(width: 8),
@@ -157,7 +162,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: size.width / 2.4,
                       child: Text(
-                        homeScreenController.topVisitedList[index].title!,
+                        homeScreenController.topVisitedList[index].title,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),
@@ -202,7 +207,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                         )),
-                        placeholder: (context, url) => loading(),
+                        placeholder: (context, url) => Loading(),
                         errorWidget: (context, url, error) => const Icon(
                           Icons.image_not_supported_outlined,
                           size: 50,

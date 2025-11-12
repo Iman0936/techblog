@@ -1,11 +1,14 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:techblog/component/my_colors.dart';
-import 'package:techblog/view/article_list_screen.dart';
+import 'package:techblog/my_http_overrides.dart';
 import 'package:techblog/view/splash_screen.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+Future<void> main() async {
+  HttpOverrides.global=MyHttpOverrides();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: SolidColors.statusBarColor,
@@ -14,6 +17,7 @@ void main() {
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -31,10 +35,10 @@ class MyApp extends StatelessWidget {
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(width: 2)
+            borderSide: const BorderSide(width: 2),
           ),
           filled: true,
-          fillColor: Colors.white
+          fillColor: Colors.white,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(

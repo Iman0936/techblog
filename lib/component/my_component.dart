@@ -24,10 +24,12 @@ class TechDivider extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class MainTags extends StatelessWidget {
   MainTags({super.key, required this.textTheme, required this.index});
 
   final TextTheme textTheme;
+  // ignore: prefer_typing_uninitialized_variables
   var index;
 
   @override
@@ -72,8 +74,8 @@ myLaunchUrl(String url) async {
   }
 }
 
-class loading extends StatelessWidget {
-  const loading({super.key});
+class Loading extends StatelessWidget {
+  const Loading({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:techblog/component/my_component.dart';
 import 'package:techblog/controller/list_article_controller.dart';
 import 'package:techblog/controller/single_article_controller.dart';
-import 'package:techblog/view/single.dart';
 
+// ignore: must_be_immutable
 class ArticleListScreen extends StatelessWidget {
   String title;
   ArticleListScreen({required this.title, super.key});
@@ -56,7 +56,7 @@ class ArticleListScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            placeholder: (context, url) => const loading(),
+                            placeholder: (context, url) => const Loading(),
                             errorWidget: (context, url, error) => const Icon(
                               Icons.image_not_supported_outlined,
                               size: 50,

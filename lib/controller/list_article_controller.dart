@@ -33,7 +33,7 @@ class ListArticleController extends GetxController {
     articleList.clear();
     loading.value = true;
 
-    var response = await DioService().getMethod(ApiConstant.baseUrl+"article/get.php?command=get_articles_with_tag_id&tag_id=$id&user_id=");
+    var response = await DioService().getMethod("${ApiConstant.baseUrl}article/get.php?command=get_articles_with_tag_id&tag_id=$id&user_id=");
 
     if (response.statusCode == 200) {
       // اینجا درستش کن!

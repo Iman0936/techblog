@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:techblog/component/my_colors.dart';
+import 'package:techblog/component/constant/my_colors.dart';
 import 'package:techblog/component/my_component.dart';
-import 'package:techblog/component/my_string.dart';
+import 'package:techblog/component/constant/my_string.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/models/fake_data.dart';
 

@@ -41,6 +41,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/write.png
   AssetGenImage get write => const AssetGenImage('assets/icons/write.png');
 
+  /// File path: assets/icons/writeArticleIcon.png
+  AssetGenImage get writeArticleIcon =>
+      const AssetGenImage('assets/icons/writeArticleIcon.png');
+
+  /// File path: assets/icons/writePodcastIcon.png
+  AssetGenImage get writePodcastIcon =>
+      const AssetGenImage('assets/icons/writePodcastIcon.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     bluemicrophon,
@@ -50,6 +58,8 @@ class $AssetsIconsGen {
     home,
     user,
     write,
+    writeArticleIcon,
+    writePodcastIcon,
   ];
 }
 
@@ -73,6 +83,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/techbot.svg
   SvgGenImage get techbot => const SvgGenImage('assets/images/techbot.svg');
 
+  /// File path: assets/images/techbot_empty.svg
+  SvgGenImage get techbotEmpty =>
+      const SvgGenImage('assets/images/techbot_empty.svg');
+
   /// List of all assets
   List<dynamic> get values => [
     avatar,
@@ -80,6 +94,7 @@ class $AssetsImagesGen {
     posterTest,
     singlePlaceHolder,
     techbot,
+    techbotEmpty,
   ];
 }
 

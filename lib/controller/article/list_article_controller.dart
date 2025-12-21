@@ -1,7 +1,7 @@
 // controller/article_controller.dart
 
 import 'package:get/get.dart';
-import 'package:techblog/component/api_constant.dart';
+import 'package:techblog/component/constant/api_constant.dart';
 import 'package:techblog/models/article_model.dart';
 import 'package:techblog/services/dio_service.dart';
 
@@ -18,7 +18,7 @@ class ListArticleController extends GetxController {
   getList() async {
     loading.value = true;
 
-    var response = await DioService().getMethod(ApiConstant.getArticleList);
+    var response = await DioService().getMethod(ApiUrlConstant.getArticleList);
 
     if (response.statusCode == 200) {
       // اینجا درستش کن!
@@ -28,12 +28,15 @@ class ListArticleController extends GetxController {
     }
 
     loading.value = false;
-  } 
+  }
+
   getArticleListWithTagsId(String id) async {
     articleList.clear();
     loading.value = true;
 
-    var response = await DioService().getMethod("${ApiConstant.baseUrl}article/get.php?command=get_articles_with_tag_id&tag_id=$id&user_id=");
+    var response = await DioService().getMethod(
+      "${ApiUrlConstant.baseUrl}article/get.php?command=get_articles_with_tag_id&tag_id=$id&user_id=",
+    );
 
     if (response.statusCode == 200) {
       // اینجا درستش کن!

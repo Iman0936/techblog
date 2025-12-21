@@ -3,14 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:techblog/controller/register_controller.dart';
 import 'package:techblog/gen/assets.gen.dart';
-import 'package:techblog/component/my_string.dart';
+import 'package:techblog/component/constant/my_string.dart';
 import 'package:validators/validators.dart';
 
 // ignore: must_be_immutable
 class RegisterIntro extends StatelessWidget {
   RegisterIntro({super.key});
 
-  RegisterController registerController = Get.put(RegisterController());
+  var registerController=Get.find<RegisterController>();
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;

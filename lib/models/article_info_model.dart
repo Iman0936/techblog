@@ -1,4 +1,4 @@
-import 'package:techblog/component/api_constant.dart';
+import 'package:techblog/component/constant/api_constant.dart';
 
 class ArticleInfoModel {
   String? id;
@@ -13,14 +13,14 @@ class ArticleInfoModel {
   String? createdAt;
   bool? isFavorite;
 
-  ArticleInfoModel();
+  ArticleInfoModel(this.title, this.content, this.image);
 
   ArticleInfoModel.fromJson(Map<String, dynamic> element) {
     var info = element['info'];
     id = info['id'];
     title = info['title'];
     content = info['content'];
-    image = ApiConstant.hostDlUrl + info['image'];
+    image = ApiUrlConstant.hostDlUrl + info['image'];
     catId = info['cat_id'];
     catName = info['cat_name'];
     author = info['author'];

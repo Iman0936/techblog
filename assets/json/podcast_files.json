@@ -1,0 +1,47 @@
+{
+  "files": [
+    {
+      "id": "1",
+      "podcast_id": "9",
+      "file": "assets/audio/jadi-net_radio-jadi_203-three_yeaers_passed.mp3",
+      "title": "رادیوجادی ۲۰۳ – سه سال گذشت",
+      "length": "41:30"
+    },
+    {
+      "id": "2",
+      "podcast_id": "9",
+      "file": "assets/audio/jadi-net_radio-jadi_202-seksis.mp3",
+      "title": "رادیوجادی ۲۰۲ – سکسی‌ها",
+      "length": "42:41"
+    },
+    {
+      "id": "3",
+      "podcast_id": "9",
+      "file": "assets/audio/jadi-net_radio-jadi_201-this-time-layoffs.mp3",
+      "title": "رادیو جادی ۲۰۱ – اینبار اخراج",
+      "length": "54:39"
+    },
+    {
+      "id": "4",
+      "podcast_id": "10",
+      "file": "assets/audio/tecchi69.mp3",
+      "title": "تکچی 69 - غوغای مایکروسافت!!!",
+      "length": "23:15"
+    },
+    {
+      "id": "5",
+      "podcast_id": "10",
+      "file": "assets/audio/tecchi68.mp3",
+      "title": "تکچی 68 - مراسم اپل و هیاهویی برای هیچ!!!",
+      "length": "26:44"
+    }
+    ,
+    {
+      "id": "6",
+      "podcast_id": "125",
+      "file": "assets/audio/sasansafari.mp3",
+      "title": "ساسان صفری - متخصص اندروید",
+      "length": "1:35:00"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import 'package:techblog/component/api_constant.dart';
+import 'package:techblog/component/constant/api_constant.dart';
 
 class PosterModel {
   String? id;
@@ -10,6 +10,6 @@ class PosterModel {
   PosterModel.fromJson(Map<String, dynamic> element) {
     id = element["id"];
     title = element["title"];
-    image = ApiConstant.hostDlUrl + element["image"];
+    image = ApiUrlConstant.hostDlUrl + element["image"];
   }
 }

@@ -1,5 +1,5 @@
 // models/article_model.dart
-import 'package:techblog/component/api_constant.dart';
+import 'package:techblog/component/constant/api_constant.dart';
 
 class ArticleModel {
   final String id;
@@ -28,7 +28,8 @@ class ArticleModel {
     return ArticleModel(
       id: json['id']?.toString() ?? '0',
       title: json['title']?.toString() ?? 'بدون عنوان',
-      image: '${ApiConstant.hostDlUrl}${json['image']?.toString() ?? 'default.jpg'}',
+      image:
+          '${ApiUrlConstant.hostDlUrl}${json['image']?.toString() ?? 'default.jpg'}',
       catId: json['cat_id']?.toString() ?? '0',
       catName: json['cat_name']?.toString() ?? 'دسته‌بندی نامشخص',
       author: json['author']?.toString() ?? 'ناشناس',
